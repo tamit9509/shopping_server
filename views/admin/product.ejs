@@ -1,0 +1,17 @@
+<%-include('../includes/head.ejs')%> </head> <%-include('../includes/nevigation.ejs')%> <% if(hasLength){%> <div
+  class="row"> <% for(let product of prods)
+		{%><div class="product-container ml-3 mt-3 col-sm-3">
+    <div><img src="<%=product.imageUrl%>" alt="<%=product.title%>" width="300" height="250" class="link"></div>
+    <div class="row mt-3">
+      <div class=" col-sm-6"> <%=product.title %> </div>
+      <div class="col-sm-6"><i class="fa fa-rupee-sign"></i> <%=product.price %></div>
+      <!-- <div class="col-sm-6"><i class="fa fa-shopping-cart link" title="add to cart"></i></div> -->
+    </div>
+    <div class="">
+      <a href="/admin/edit-product/<%=product.id %>"> <i class="fa fa-edit icon-link link" title="edit"></i></a>
+      <i class="fa fa-trash icon-link link" title="delete"></i>
+    </div>
+    <!-- <div>Description:<%=product.description %></div> -->
+  </div> <%}%>
+      </div>
+		<%}%> <div>Shop material....</div> <%-include('../includes/end.ejs')%>

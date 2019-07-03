@@ -1,0 +1,23 @@
+   <%-include('../includes/head.ejs')%>
+</head>
+<%-include('../includes/nevigation.ejs')%>
+<%if(hasLength){%> 
+   <div class="row"> <%
+   for(let product of prods){%>
+      <div class="product-container ml-3 mt-3 col-sm-3">
+         <div>
+            <a href="/products/<%=product.id%>">
+               <img src="<%=product.imageUrl%>" alt="<%=product.title%>" width="300"
+               height="250" class="link">
+            </a>
+         </div>
+      <div class=" mt-3"> <%=product.title %> </div>
+      <div class="row">
+         <div class="col-sm-6"><i class="fa fa-rupee-sign"></i> <%=product.price %></div>
+         <div class="col-sm-6"><i class="fa fa-shopping-cart link" title="add to cart"></i></div>
+      </div>
+   </div> <%
+   }%>
+   </div>
+<%}%> 
+<%-include('../includes/end.ejs')%>

@@ -1,0 +1,25 @@
+label {
+	display: block;
+	font-weight: bold;
+	margin-top: 15px;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'] {
+	outline: none;
+	display: block;
+	width: 93%;
+	padding: 14px;
+	border: none;
+	box-shadow: 1px 1px 5px;
+}
+
+button {
+	margin-top: 20px;
+	border: none;
+	padding: 14px 20px;
+	background: royalblue;
+	color: whitesmoke;
+	font-size: 14px;
+}

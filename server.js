@@ -1,7 +1,6 @@
 const http = require('http');
 const express = require('express');
-// const path = require('path');
-const authroute = require('./routes');
+const routes = require('./routes');
 const mongoconnect = require('./util/db').connection;
 const app = express();
 
@@ -30,11 +29,11 @@ app.use(express.static('public')); // use only if main file is at rootdirectory 
 //   console.log(req.body);
 //   res.send('comming');
 // })
-app.set('view engine', 'ejs');
-app.set('views', 'views');
-
-app.use('/admin', authroute.admin);
-app.use(authroute.shope);
+// app.set('view engine', 'ejs');
+// app.set('views', 'views');
+app.use(routes.auth);
+app.use('/admin', routes.admin);
+app.use(routes.shope);
 app.use((req, res) => {
 	res.status(404).render('404', {
 		pageTitle: 'Page not found',

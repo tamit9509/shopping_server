@@ -21,12 +21,15 @@ module.exports = class Product {
 	}
 
 	save(callback) {
+		console.log(this);
+
 		this.id = Math.random().toString();
-		getContentFromFile((products) => {
+		getContentFromFile(async (products) => {
 			let product = [];
 			product = products;
 			product.push(this);
-			fs.writeFile(p, JSON.stringify(product), (err) => {});
+			await fs.writeFile(p, JSON.stringify(product), (err) => { });
+			callback(this);
 		});
 	}
 
@@ -44,8 +47,6 @@ module.exports = class Product {
 	}
 
 	updateProduct(productId, callback) {
-		console.log('zdfvz');
-
 		this.id = productId;
 		getContentFromFile((products) => {
 			const index = products.findIndex((obj) => {
@@ -53,8 +54,7 @@ module.exports = class Product {
 			});
 			products.splice(index, 1);
 			const obj = products.splice(index, 0, this);
-			fs.writeFile(p, JSON.stringify(products), (err) => {});
-			console.log(obj);
+			fs.writeFile(p, JSON.stringify(products), (err) => { });
 			if (obj) {
 				callback(obj);
 			}
@@ -64,13 +64,11 @@ module.exports = class Product {
 	static deleteProduct(productId, callback) {
 		getContentFromFile((products) => {
 			const index = products.findIndex((obj) => {
-				obj.id === productId;
+				return obj.id === productId;
 			});
-			const obj = products.splice(index, 0);
-			fs.writeFile(p, JSON.stringify(products), (err) => {});
-			console.log(obj);
-
-			callback(obj);
+			const obj = products.splice(index, 1);
+			fs.writeFile(p, JSON.stringify(products), (err) => { });
+			callback(obj[0]);
 		});
 	}
 };

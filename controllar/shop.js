@@ -22,7 +22,6 @@ exports.getAllProducts = (req, res) => {
 
 exports.getIndex = (req, res) => {
 	productModel.fetchAll((products) => {
-		// console.log(products);
 		res.render('shop/index', {
 			prods: products,
 			hasLength: products.length > 0,

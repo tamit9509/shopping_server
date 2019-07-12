@@ -23,7 +23,11 @@ app.use((req, res, next) => {
 	next();
 });
 
-
+app.use(express.json());
+app.use((req, res, next) => {
+	console.log(req.body);
+	next();
+})
 app.use(express.static('public')); // use only if main file is at rootdirectory else use this ===>>>>> app.use(express.static(path.join(__dirname, 'public')));
 // app.use('/', (req, res, next) => {
 //   console.log(req.body);

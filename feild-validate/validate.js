@@ -1,8 +1,6 @@
 const { body } = require('express-validator')
 
 exports.validate = method => {
-    console.log(method);
-
     switch (method) {
         case 'registerUser':
             return [

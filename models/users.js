@@ -7,7 +7,6 @@ const rootDir = require('../util/path');
 const p = path.join(rootDir, 'data', 'user.json');
 const getFileContent = (callback) => {
   fs.readFile(p, (err, content) => {
-
     callback(JSON.parse(content));
   })
 }
@@ -44,10 +43,7 @@ class RegisterUser {
 
   static getJWTToken(obj) {
     const token = jwt.sign(obj, 'shhhhhhhhhhhhhhhhh');
-    console.log('token');
     console.log(jwt.verify(token, 'shhhhhhhhhhhhhhhhh'));
-
-
   }
 }
 module.exports = RegisterUser;

@@ -7,11 +7,9 @@ exports.addProduct = (req, res) => {
 	// });
 	const product = new productModel(req.body);
 
-	product.save(() => {
+	product.save((obj) => {
 		res.send({
-			data: {
-				items: product
-			},
+			data: obj,
 			message: 'action successfull',
 			statusCode: 200
 		});
@@ -51,7 +49,7 @@ exports.updateProduct = (req, res) => {
 };
 
 exports.deleteProduct = (req, res) => {
-	// console.log(req);
+	console.log('ascxmlascm');
 
 	const productId = req.params.id;
 	productModel.deleteProduct(productId, (obj) => {
